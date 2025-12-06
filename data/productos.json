@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Aceite",
+    "price": 4500,
+    "category": "articulos",
+    "description": "Aceite de girasol.",
+    "imageUrl": "images/Aceite.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Arroz",
+    "price": 3200,
+    "category": "articulos",
+    "description": "Arroz blanco.",
+    "imageUrl": "images/Arroz.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Azucar",
+    "category": "articulos",
+    "price": 1200,
+    "description": "Azucar blanca",
+    "imageUrl": "images/azucar1.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Fideos",
+    "category": "articulos",
+    "price": 1200,
+    "description": "Spaguetti",
+    "imageUrl": "images/Fideos.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Yerba",
+    "category": "articulos",
+    "price": 2200,
+    "description": "Yerba playadito",
+    "imageUrl": "images/yerba.jpg"
+  }
+]
