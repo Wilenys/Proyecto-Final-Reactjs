@@ -13,10 +13,9 @@ import { Login } from "./components/Login/Login";
 
 function App() {
   return (
-    <BrowserRouter basename="/Proyecto-Final-React/">
+    <BrowserRouter>
       <CartProvider>
         <Routes>
-
           {/* Layout principal */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
@@ -37,7 +36,6 @@ function App() {
               }
             />
           </Route>
-
         </Routes>
       </CartProvider>
     </BrowserRouter>

@@ -5,11 +5,10 @@ import App from './App.jsx';
 import { AuthProvider } from './context/AuthContext/AuthProvider.jsx';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-    <App />
+      <App />
     </AuthProvider>
   </StrictMode>
 );
