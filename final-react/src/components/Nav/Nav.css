@@ -24,3 +24,13 @@ nav a {
 nav a:hover {
   color: #007bff;           
 }
+
+.in-cart {
+  background: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  margin-left: 6px;
+  font-weight: bold;
+}

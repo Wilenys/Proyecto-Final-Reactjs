@@ -13,11 +13,11 @@ import { Login } from "./components/Login/Login";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Proyecto-Final-React/">
       <CartProvider>
         <Routes>
 
-          
+          {/* Layout principal */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/category/:categoryId" element={<ItemListContainer />} />
@@ -25,7 +25,7 @@ function App() {
             <Route path="/carrito" element={<Cart />} />
           </Route>
 
-          
+          {/* Admin */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Login />} />
             <Route
@@ -45,4 +45,3 @@ function App() {
 }
 
 export default App;
-

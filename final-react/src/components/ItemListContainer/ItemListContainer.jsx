@@ -8,7 +8,10 @@ export const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    fetch("/data/productos.json")
+    // 👉 MUY IMPORTANTE para GitHub Pages
+    const url = `${import.meta.env.BASE_URL}data/productos.json`;
+
+    fetch(url)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Hubo un problema al buscar los productos");
@@ -16,14 +19,21 @@ export const ItemListContainer = () => {
         return res.json();
       })
       .then((data) => {
+        // 👉 Ajustar URLs de imágenes
+        const productosConImagen = data.map((p) => ({
+          ...p,
+          imageUrl: `${import.meta.env.BASE_URL}${p.imageUrl}`,
+        }));
+
+        // 👉 Filtrar por categoría (si está)
         if (categoryId) {
-          const filtrados = data.filter(
+          const filtrados = productosConImagen.filter(
             (prod) => prod.category === categoryId
           );
           setProductos(filtrados);
         } else {
-          
-          setProductos([]);
+          // 👉 Si NO hay categoría, mostrar todos
+          setProductos(productosConImagen);
         }
       })
       .catch((err) => {

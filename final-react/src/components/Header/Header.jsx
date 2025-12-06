@@ -5,7 +5,11 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="logo-container">
-        <img src="/images/Logo.jpg" alt="Logo del sitio" className="logo" />
+        <img
+          src={`${import.meta.env.BASE_URL}images/Logo.jpg`}
+          alt="Logo del sitio"
+          className="logo"
+        />
       </div>
       <Nav />
     </header>

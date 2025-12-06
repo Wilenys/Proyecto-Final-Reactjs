@@ -7,7 +7,7 @@ export const Home = () => {
       <div className="home-banner-box">
         <img 
           className="home-banner" 
-          src="/images/Inicio.jpg" 
+          src={`${import.meta.env.BASE_URL}images/Inicio.jpg`} 
           alt="Banner principal"
         />
       </div>
@@ -15,7 +15,7 @@ export const Home = () => {
       <h1 className="home-title">Bienvenidos a mi página</h1>
 
       <p className="home-text">
-        Encontrá los mejores productos al mejor precio.  
+        Encontrá los mejores productos al mejor precio.
       </p>
       
     </div>
