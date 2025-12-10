@@ -4,17 +4,17 @@ import { CartContext } from "./CartContext";
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // 👉 Verificar si existe
+ 
   const exists = (id) => {
     return cart.some((p) => p.id === id);
   };
 
-  // 👉 Agregar producto (si existe, suma SIEMPRE 1)
+  
   const addItem = (item) => {
     const productExists = cart.find((p) => p.id === item.id);
 
     if (productExists) {
-      // 🔥 Incrementar +1 siempre que ya exista
+      
       setCart((prev) =>
         prev.map((p) =>
           p.id === item.id
@@ -23,12 +23,12 @@ export const CartProvider = ({ children }) => {
         )
       );
     } else {
-      // 🔥 Agregar por primera vez con quantity = 1
+      
       setCart([...cart, { ...item, quantity: 1 }]);
     }
   };
 
-  // 👉 Incrementar cantidad manualmente
+  
   const increment = (id) => {
   setCart(prev =>
     prev.map(p => p.id === id ? { ...p, quantity: p.quantity + 1 } : p)

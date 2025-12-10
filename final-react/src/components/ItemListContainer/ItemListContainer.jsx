@@ -8,37 +8,32 @@ export const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    // 👉 MUY IMPORTANTE para GitHub Pages
-    const url = `${import.meta.env.BASE_URL}data/productos.json`;
+    const URL = "https://6930ea5d11a8738467cc9512.mockapi.io/products";
 
-    fetch(url)
+    fetch(URL)
       .then((res) => {
-        if (!res.ok) {
-          throw new Error("Hubo un problema al buscar los productos");
-        }
+        if (!res.ok) throw new Error("Error al buscar productos");
         return res.json();
       })
       .then((data) => {
-        // 👉 Ajustar URLs de imágenes
-        const productosConImagen = data.map((p) => ({
-          ...p,
-          imageUrl: `${import.meta.env.BASE_URL}${p.imageUrl}`,
-        }));
+        
+        if (categoryId === "articulos") {
+          setProductos(data);
+          return;
+        }
 
-        // 👉 Filtrar por categoría (si está)
+        
         if (categoryId) {
-          const filtrados = productosConImagen.filter(
-            (prod) => prod.category === categoryId
+          const filtrados = data.filter(
+            (prod) =>
+              prod.category?.toLowerCase() === categoryId.toLowerCase()
           );
           setProductos(filtrados);
         } else {
-          // 👉 Si NO hay categoría, mostrar todos
-          setProductos(productosConImagen);
+          setProductos(data);
         }
       })
-      .catch((err) => {
-        console.error("Error al cargar productos:", err);
-      });
+      .catch((err) => console.error("Error al cargar productos:", err));
   }, [categoryId]);
 
   return (
@@ -47,4 +42,3 @@ export const ItemListContainer = () => {
     </section>
   );
 };
-

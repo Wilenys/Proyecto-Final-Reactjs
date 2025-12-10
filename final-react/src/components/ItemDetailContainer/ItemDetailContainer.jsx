@@ -1,47 +1,26 @@
 import { useEffect, useState } from "react";
-import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
-
-
+import { ItemDetail } from "../ItemDetail/ItemDetail";
 
 export const ItemDetailContainer = () => {
+  const { id } = useParams();
+  const [producto, setProducto] = useState(null);
 
-    const [detail, setDetail] = useState({});
+  useEffect(() => {
+    const URL = `https://6930ea5d11a8738467cc9512.mockapi.io/products/${id}`;
 
-    const {id} = useParams();
+    fetch(URL)
+      .then((res) => {
+        if (!res.ok) throw new Error("Error al buscar producto");
+        return res.json();
+      })
+      .then((data) => setProducto(data))
+      .catch((err) => console.error("Error al cargar producto:", err));
+  }, [id]);
 
-    useEffect(() => {
-        fetch("/data/productos.json")
-        .then((res) => {
-            if(!res.ok){
-                throw new Error("Hubo un problema al buscar productos");
-            }
-
-            return res.json();
-        })
-        .then((data)=>{
-            const found = data.find((prod)=> prod.id === id);
-            if (found) { 
-                setDetail(found);
-
-            } else {
-                throw new Error ("Producto no se encontro");
-            }
-        })
-        .catch((err)=>{
-            console.log(err);
-        });
-        
-    }, [id]);
-
-
-    return <main>
-        {Object.keys(detail).length ? (
-            <ItemDetail   detail={detail}/> 
-        ) : (
-            <p>Cargando...</p>
-
-        )}
-
-    </main>;
+  return (
+    <div>
+      {producto ? <ItemDetail producto={producto} /> : <p>Cargando...</p>}
+    </div>
+  );
 };

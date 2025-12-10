@@ -3,30 +3,32 @@
   max-width: 720px;
   margin: 2rem auto;
   padding: 1.25rem 1.5rem;
-  background: #2c2c2c; /* gris oscuro */
-  color: #f0f0f0; /* texto claro */
+  background: hsl(235, 52%, 76%); /* fondo claro */
+  color: #222; /* texto oscuro */
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* sombra suave */
+  border: 1px solid #e6e6e6;
 }
 
 /* Título */
 .product-form h2 {
   margin: 0 0 1rem 0;
   font-size: 1.6rem;
-  color: #fff;
+  color: #111;
 }
 
-/* Filas del formulario (tus <div>) */
+/* Filas del formulario */
 .product-form > div {
   display: grid;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
-/* Label + elementos */
+/* Label */
 .product-form label {
   font-size: 0.95rem;
-  color: #ddd;
+  color: #333;
+  font-weight: 500;
 }
 
 /* Inputs / textarea */
@@ -36,77 +38,47 @@
 .product-form textarea {
   width: 100%;
   padding: 0.6rem 0.75rem;
-  border: 1px solid #444;
+  border: 1px solid #cccccc;
   border-radius: 8px;
-  background: #3a3a3a;
-  color: #f0f0f0;
+  background: #f8f8f8; /* gris claro */
+  color: #222;
   outline: none;
-  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-/* Placeholder más tenue */
-.product-form ::placeholder {
-  color: #aaa;
-}
+/* ----------------------------- */
+/*           BOTÓN               */
+/* ----------------------------- */
 
-/* Hover/focus */
-.product-form input[type="text"]:focus,
-.product-form input[type="number"]:focus,
-.product-form input[type="file"]:focus,
-.product-form textarea:focus {
-  border-color: #5aa3ff;
-  background: #353535;
-}
-
-/* Textarea */
-.product-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* Nota pequeña (tu <small>) */
-.product-form small {
-  color: #bdbdbd;
-}
-
-/* Preview de imagen */
-.product-form img {
-  display: block;
-  max-width: 220px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  margin-top: 0.35rem;
-}
-
-/* Botón principal reutilizable */
-.btn-admin {
+.btn {
   display: inline-block;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 8px;
-  background: #5aa3ff;
-  color: #0e0e0e;
+  padding: 0.65rem 1.3rem;
+  border: 2px solid #000;     /* borde negro */
+  background: #ffffff;        /* fondo blanco */
+  color: #000;                /* texto negro */
   font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.05s ease, background 0.15s ease, box-shadow 0.15s ease;
+  transition: all 0.2s ease;
+  font-size: 1rem;
 }
 
+/* Hover */
 .btn:hover {
-  background: #79b6ff;
+  background: #f2f2f2;        /* gris suave */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
+/* Click */
 .btn:active {
-  transform: translateY(1px);
+  transform: translateY(0px);
+  box-shadow: none;
 }
+
+/* Deshabilitado */
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-/* Layout responsive (opcional, si más adelante querés dos columnas) */
-@media (min-width: 640px) {
-  .product-form .row-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
+  transform: none;
+  box-shadow: none;
 }
